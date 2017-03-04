@@ -160,8 +160,8 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="183" />
-    <option name="y" value="529" />
+    <option name="x" value="435" />
+    <option name="y" value="475" />
     <option name="width" value="1440" />
     <option name="height" value="834" />
   </component>
@@ -553,12 +553,12 @@
       <workItem from="1488238741576" duration="2735000" />
       <workItem from="1488446398443" duration="15775000" />
       <workItem from="1488528385975" duration="8029000" />
-      <workItem from="1488589087671" duration="343000" />
+      <workItem from="1488589087671" duration="433000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143313000" />
+    <option name="totallyTimeSpent" value="143403000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -570,7 +570,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="183" y="529" width="1440" height="834" extended-state="0" />
+    <frame x="435" y="475" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />

@@ -12,69 +12,62 @@
            <div class="result_wrap">
                <div class="result_title">
                    <h3>添加友情链接</h3>
+
                    @if(count($errors)>0)
                        <div class="mark">
                            @if(is_object($errors))
-                               @foreach($errors->all() as $error)
-                                   <p>{{$error}}</p>
-                               @endforeach
+                           @foreach($errors->all() as $error)
+                               <p>{{$error}}</p>
+                           @endforeach
                            @else
                                <p>{{$errors}}</p>
                            @endif
                        </div>
                    @endif
+
                </div>
                <div class="result_content">
                    <div class="short_wrap">
-                       {{--<a href="{{url('admin/links/create')}}"><i class="fa fa-plus"></i>添加链接</a>--}}
-                       {{--<a href="{{url('admin/links')}}"><i class="fa fa-recycle"></i>全部链接</a>--}}
+                       <a href="{{url('admin/category/create')}}"><i class="fa fa-plus"></i>添加分类</a>
+                       <a href="{{url('admin/category')}}"><i class="fa fa-recycle"></i>全部分类</a>
                    </div>
                </div>
            </div>
            <!--结果集标题与导航组件 结束-->
 
            <div class="result_wrap">
-               <form action="{{url('admin/category')}}" method="post">
+               <form action="{{url('admin/links')}}" method="post">
                    {{csrf_field()}}
                    <table class="add_tab">
                        <tbody>
-
                        <tr>
-                           <th><i class="require">*</i>分类名称：</th>
+                           <th><i class="require">*</i>链接名称：</th>
                            <td>
-                               <input type="text" name="category_name">
-                               <span><i class="fa fa-exclamation-circle yellow"></i>分类名称必须填写</span>
-                           </td>
-                       </tr>
-
-
-                       <tr>
-                           <th><i class="require"></i>分类标题：</th>
-                           <td>
-                               <input type="text" class="lg" name="category_title">
+                               <input type="text" name="link_name">
+                               <span><i class="fa fa-exclamation-circle yellow"></i>链接名称必须填写</span>
                            </td>
                        </tr>
 
                        <tr>
-                           <th>关键词：</th>
+                           <th><i class="require">*</i>Url：</th>
                            <td>
-                               <textarea name="category_keywords"></textarea>
-                           </td>
-                       </tr>
-
-                       <tr>
-                           <th>描述：</th>
-                           <td>
-                               <textarea name="category_description"></textarea>
-                           </td>
-                       </tr>
-
-
-                       <tr>
-                           <th><i class="require">*</i>排序：</th>
-                           <td>
-                               <input type="text" class="sm" name="category_order">
+                               <input type="text" class="lg" name="link_url">
                                <span><i class="fa fa-exclamation-circle yellow"></i></span>
+                           </td>
+                       </tr>
+
+                       <tr>
+                           <th><i class="require"></i>链接标题：</th>
+                           <td>
+                               <input type="text" class="lg" name="link_title">
+                           </td>
+                       </tr>
+
+
+                       <tr>
+                           <th>排序：</th>
+                           <td>
+                               <input type="text" class="sm" name="link_order">
                            </td>
                        </tr>
 

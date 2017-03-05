@@ -24,10 +24,19 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
     Route::resource('category','CategoryController');
 
-
     Route::resource('article','ArticleController');
 
     Route::post('cate/changeorder','CategoryController@changerOrder');
+
+    Route::any('upload','CommonController@upload');
+
+    Route::resource('links','LinksController');
+
+    Route::post('links/changeorder','LinksController@changerOrder');
+
+    Route::resource('navs','NavsController');
+
+
 
 
 });

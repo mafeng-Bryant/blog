@@ -17,8 +17,8 @@ class ConfigController extends CommonController
       return view('admin.config.index',compact('data'));
   }
 
-    public function  changerOrder(){
-
+    public function  changerOrder()
+    {
         $input = Input::all();
         $nav = Config::find($input['config_id']);
         $nav->nav_order = $input['config_order'];

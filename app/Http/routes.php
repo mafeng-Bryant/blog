@@ -38,6 +38,8 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
     Route::post('navs/changeorder','NavsController@changerOrder');
 
+    Route::resource('config','ConfigController');
+
 
 
 });

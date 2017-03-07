@@ -4,14 +4,14 @@
 
            <div class="crumb_warp">
                <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-               <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 自定义导航管理
+               <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 配置项管理
            </div>
            <!--面包屑导航 结束-->
 
            <!--结果集标题与导航组件 开始-->
            <div class="result_wrap">
                <div class="result_title">
-                   <h3>添加自定义导航</h3>
+                   <h3>添加配置项</h3>
 
                    @if(count($errors)>0)
                        <div class="mark">
@@ -28,43 +28,68 @@
                </div>
                <div class="result_content">
                    <div class="short_wrap">
-                       <a href="{{url('admin/navs/create')}}"><i class="fa fa-plus"></i>添加导航</a>
-                       <a href="{{url('admin/navs')}}"><i class="fa fa-recycle"></i>全部导航</a>
+                       <a href="{{url('admin/config/create')}}"><i class="fa fa-plus"></i>添加配置项</a>
+                       <a href="{{url('admin/config')}}"><i class="fa fa-recycle"></i>全部配置项</a>
                    </div>
                </div>
            </div>
            <!--结果集标题与导航组件 结束-->
 
            <div class="result_wrap">
-               <form action="{{url('admin/navs')}}" method="post">
+               <form action="{{url('admin/config')}}" method="post">
                    {{csrf_field()}}
                    <table class="add_tab">
                        <tbody>
+
                        <tr>
-                           <th><i class="require">*</i>导航名称：</th>
+                           <th><i class="require">*</i>标题：</th>
                            <td>
-                               <input type="text" name="nav_name">
-                               <input type="text"  class="sm" name="nav_alias">
-                               <span><i class="fa fa-exclamation-circle yellow"></i>导航名称必须填写</span>
+                               <input type="text" name="config_title">
+                               <span><i class="fa fa-exclamation-circle yellow"></i>配置项标题必须填写</span>
+                           </td>
+                       </tr>
+
+
+                       <tr>
+                           <th><i class="require">*</i>名称：</th>
+                           <td>
+                               <input type="text" name="config_name">
+                               <span><i class="fa fa-exclamation-circle yellow"></i>配置项名称必须填写</span>
+                           </td>
+                       </tr>
+
+
+                       <tr>
+                           <th>类型：</th>
+                           <td>
+                               <input type="text" class="sm" name="config_type">
+                               <span><i class="fa fa-exclamation-circle yellow"></i>类型: input textarea radio</span>
                            </td>
                        </tr>
 
                        <tr>
-                           <th><i class="require">*</i>Url：</th>
+                           <th>类型值：</th>
                            <td>
-                               <input type="text" class="lg" name="nav_url">
+                               <input type="text" class="lg" name="config_value">
                                <span><i class="fa fa-exclamation-circle yellow"></i></span>
                            </td>
                        </tr>
 
 
-
                        <tr>
                            <th>排序：</th>
                            <td>
-                               <input type="text" class="sm" name="nav_order">
+                               <input type="text" class="sm" name="config_order" value="0">
                            </td>
                        </tr>
+
+                       <tr>
+                           <th>说明：</th>
+                           <td>
+                             <textarea id="" cols="30" rows="10" name="config_tips"></textarea>
+                           </td>
+                       </tr>
+
 
                        <tr>
                            <th></th>

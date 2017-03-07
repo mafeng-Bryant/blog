@@ -55,17 +55,16 @@ class ConfigController extends CommonController
     public function  store()
     {
 
-
         if ($input = Input::except("_token"))
         {
             $rules = [
-                'nav_name'=>'required',
-                'nav_url'=>'required',
+                'config_name'=>'required',
+                'config_title'=>'required',
             ];
 
             $message = [
-                'nav_name.required'=>'自定义导航名称不能为空！',
-                'nav_url.required'=>'自定义导航URL不能为空！',
+                'config_name.required'=>'配置项名称不能为空！',
+                'config_title.required'=>'配置项标题不能为空！',
             ];
 
             $validator = Validator::make($input,$rules,$message);
@@ -73,7 +72,7 @@ class ConfigController extends CommonController
             if ($validator->passes())  {
                 $result = Config::create($input);
                 if ($result){
-                    return redirect('admin/navs');
+                    return redirect('admin/config');
                 }else {
                     return back()->with('errors','数据填充失败，请稍后重试!') ;
                 }

@@ -13,16 +13,16 @@ class NavsController extends CommonController
     //全部友情链接列表
   public  function  index(){
 
-      $data = Navs::orderBy('link_order','asc')->get();
+      $data = Navs::orderBy('nav_order','asc')->get();
       return view('admin.navs.index',compact('data'));
   }
 
     public function  changerOrder(){
 
         $input = Input::all();
-        $link = Navs::find($input['nav_id']);
-        $link->link_order = $input['link_order'];
-        $re = $link->update();
+        $nav = Navs::find($input['nav_id']);
+        $nav->nav_order = $input['nav_order'];
+        $re = $nav->update();
         if ($re){
             $data = [
                 'status' =>0,
@@ -54,16 +54,18 @@ class NavsController extends CommonController
     //提交表单
     public function  store()
     {
-        if ($input = Input::except("_token")){
 
+
+        if ($input = Input::except("_token"))
+        {
             $rules = [
-                'link_name'=>'required',
-                'link_url'=>'required'
+                'nav_name'=>'required',
+                'nav_url'=>'required',
             ];
 
             $message = [
-                'link_name.required'=>'友情链接名称不能为空',
-                'link_url.required'=>'友情链接地址不能为空',
+                'nav_name.required'=>'自定义导航名称不能为空！',
+                'nav_url.required'=>'自定义导航URL不能为空！',
             ];
 
             $validator = Validator::make($input,$rules,$message);

@@ -14,6 +14,42 @@ class ConfigController extends CommonController
   public  function  index()
   {
       $data = Config::orderBy('config_order','asc')->get();
+
+
+      foreach ($data as $k => $v){
+
+       switch ($v->config_type) {
+
+           case 'input':
+
+               $data[$k]->_html  = '<input type="text" class="lg" name="config_content"  value="'.$v->config_content.'">';
+
+           break;
+           case 'textarea':
+
+               $data[$k]->_html  = '<textarea type="text" class="lg" name="config_content" >'.$v->config_content.'</textarea>';
+
+               break;
+           case 'radio':
+
+               $arr = explode(',',$v->config_value);
+               $str = '';
+               foreach ($arr as $m=>$n){
+
+                 $r = explode('|',$n);
+                 $c = $v->config_content == $r[0]? '  checked  ':'';
+
+                   $str.='<input type="radio" name="config_content" value="'.$r[0].'"'.$c.'>'.$r[1].'  ';
+
+               }
+               $data[$k]->_html = $str;
+               echo $str;
+
+               break;
+
+       }
+      }
+
       return view('admin.config.index',compact('data'));
   }
 
@@ -21,7 +57,7 @@ class ConfigController extends CommonController
     {
         $input = Input::all();
         $nav = Config::find($input['config_id']);
-        $nav->nav_order = $input['config_order'];
+        $nav->config_order = $input['config_order'];
         $re = $nav->update();
         if ($re){
             $data = [

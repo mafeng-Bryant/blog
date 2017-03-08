@@ -62,16 +62,17 @@
                        <tr>
                            <th>类型：</th>
                            <td>
-                               <input type="text" class="sm" name="config_type">
-                               <span><i class="fa fa-exclamation-circle yellow"></i>类型: input textarea radio</span>
+                               <input type="radio"  name="config_type" value="input" checked onclick="showtr()">input
+                               <input type="radio"  name="config_type" value="textarea" onclick="showtr()">textarea
+                               <input type="radio"   name="config_type" value="radio" onclick="showtr()">radio
                            </td>
                        </tr>
 
-                       <tr>
+                       <tr class="config_value">
                            <th>类型值：</th>
                            <td>
                                <input type="text" class="lg" name="config_value">
-                               <span><i class="fa fa-exclamation-circle yellow"></i></span>
+                               <p><i class="fa fa-exclamation-circle yellow"></i>类型值只有在radio的情况下才需要配置，格式 1|开启,0|关闭</p>
                            </td>
                        </tr>
 
@@ -102,5 +103,24 @@
                    </table>
                </form>
            </div>
+
+
+          <script>
+
+
+           showtr();
+
+            function showtr() {
+
+                var type = $('input[name = config_type]:checked').val();
+                if(type == 'radio'){
+                    $('.config_value').show();
+                }else  {
+                    $('.config_value').hide();
+
+                }
+
+            }
+        </script>
 
        @endsection

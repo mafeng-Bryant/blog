@@ -26,13 +26,13 @@ class ConfigController extends CommonController
         if ($re){
             $data = [
                 'status' =>0,
-                'msg' => '友情链接排序成功',
+                'msg' => '配置项排序成功',
             ];
 
         }else {
             $data = [
                 'status' =>1,
-                'msg' => '友情链接排序失败！',
+                'msg' => '配置项排序失败！',
             ];
         }
         return $data;

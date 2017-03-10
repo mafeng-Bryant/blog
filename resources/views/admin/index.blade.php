@@ -44,8 +44,7 @@
 
 					<li><a href="{{url('admin/navs')}}" target="main"><i class="fa fa-fw fa-navicon "></i>自定义导航</a></li>
 
-
-					<li><a href="#" target="main"><i class="fa fa-fw fa-database"></i>备份还原</a></li>
+					<li><a href="{{url('admin/config')}}" target="main"><i class="fa fa-fw fa-cogs"></i>网站配置</a></li>
 				</ul>
 			</li>
 			<li>
@@ -54,7 +53,7 @@
 					<li><a href="http://www.yeahzan.com/fa/facss.html" target="main"><i class="fa fa-fw fa-font"></i>图标调用</a></li>
 					<li><a href="http://hemin.cn/jq/cheatsheet.html" target="main"><i class="fa fa-fw fa-chain"></i>Jquery手册</a></li>
 					<li><a href="http://tool.c7sky.com/webcolor/" target="main"><i class="fa fa-fw fa-tachometer"></i>配色板</a></li>
-					<li><a href="element.html" target="main"><i class="fa fa-fw fa-tags"></i>其他组件</a></li>
+					<li><a href="element.html" target="main"><i class="fa fa-fw fa-cogs"></i>其他组件</a></li>
 				</ul>
 			</li>
 		</ul>

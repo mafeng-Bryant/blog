@@ -13,8 +13,8 @@ class ConfigController extends CommonController
 
   public  function  index()
   {
-      $data = Config::orderBy('config_order','asc')->get();
 
+      $data = Config::orderBy('config_order','asc')->get();
 
       foreach ($data as $k => $v){
 
@@ -22,12 +22,12 @@ class ConfigController extends CommonController
 
            case 'input':
 
-               $data[$k]->_html  = '<input type="text" class="lg" name="config_content"  value="'.$v->config_content.'">';
+               $data[$k]->_html  = '<input type="text" class="lg" name="config_content[]"  value="'.$v->config_content.'">';
 
            break;
            case 'textarea':
 
-               $data[$k]->_html  = '<textarea type="text" class="lg" name="config_content" >'.$v->config_content.'</textarea>';
+               $data[$k]->_html  = '<textarea type="text" class="lg" name="config_content[]" >'.$v->config_content.'</textarea>';
 
                break;
            case 'radio':
@@ -39,7 +39,7 @@ class ConfigController extends CommonController
                  $r = explode('|',$n);
                  $c = $v->config_content == $r[0]? '  checked  ':'';
 
-                   $str.='<input type="radio" name="config_content" value="'.$r[0].'"'.$c.'>'.$r[1].'  ';
+                   $str.='<input type="radio" name="config_content[]" value="'.$r[0].'"'.$c.'>'.$r[1].'  ';
 
                }
                $data[$k]->_html = $str;
@@ -52,6 +52,28 @@ class ConfigController extends CommonController
 
       return view('admin.config.index',compact('data'));
   }
+
+   public function changerContent()
+   {
+       $input = Input::all();
+
+       foreach ($input['config_id'] as $k=>$v){
+           Config::where('config_id',$v)->update(['config_content'=>$input['config_content'][$k]]);
+       }
+      $this->writeConfigFile();
+       return back()->with('errors','配置项更新成功!') ;
+   }
+
+
+   public function writeConfigFile()
+   {
+       $config = Config::pluck('config_content','config_name')->all();
+       $path = base_path().'/config/web.php';
+       $content = '<?php return '.var_export($config,true).';';
+       file_put_contents($path,$content);
+   }
+
+
 
     public function  changerOrder()
     {
@@ -108,6 +130,7 @@ class ConfigController extends CommonController
             if ($validator->passes())  {
                 $result = Config::create($input);
                 if ($result){
+                    $this->writeConfigFile();
                     return redirect('admin/config');
                 }else {
                     return back()->with('errors','数据填充失败，请稍后重试!') ;

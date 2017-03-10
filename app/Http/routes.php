@@ -40,8 +40,11 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
     Route::resource('config','ConfigController');
 
+    Route::post('config/changecontent','ConfigController@changerContent');
 
     Route::post('config/changeorder','ConfigController@changerOrder');
+
+    Route::get('putfile','ConfigController@writeConfigFile');
 
 
 

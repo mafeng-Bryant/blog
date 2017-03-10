@@ -9,10 +9,20 @@
 
 
            <!--搜索结果页面 列表 开始-->
-           <form action="#" method="post">
                <div class="result_wrap">
                    <div class="result_title">
                        <h3>添加配置项</h3>
+                       @if(count($errors)>0)
+                           <div class="mark">
+                               @if(is_object($errors))
+                                   @foreach($errors->all() as $error)
+                                       <p>{{$error}}</p>
+                                   @endforeach
+                               @else
+                                   <p>{{$errors}}</p>
+                               @endif
+                           </div>
+                       @endif
                    </div>
                    <!--快捷导航 开始-->
                    <div class="result_content">
@@ -27,6 +37,10 @@
 
                <div class="result_wrap">
                    <div class="result_content">
+
+                       <form action="{{url('admin/config/changecontent')}}" method="post">
+                           {{csrf_field()}}
+
                        <table class="list_tab">
                            <tr>
                                <th class="tc" width="5%">排序</th>
@@ -50,21 +64,28 @@
                                </td>
 
                                <td>{{$v->config_name}}</td>
-                               <td>{!! $v->_html !!}</td>
+                               <td>
+                                  <input type="hidden" name="config_id[]" value="{{$v->config_id}}">
+                                   {!! $v->_html !!}
+                               </td>
                                <td>
                                    <a href="{{url('admin/config/'.$v->config_id.'/edit')}}">修改</a>
-                                   <a href="javascript:;" onclick="deleteLinks({{$v->nav_id}})">删除</a>
+                                   <a href="javascript:;" onclick="deleteLinks({{$v->config_id}})">删除</a>
 
                                </td>
                            </tr>
                 @endforeach
 
                        </table>
+                           <div class="btn_group">
+                               <input type="submit" value="提交">
+                               <input type="button" class="back" onclick="history.go(-1)" value="返回" >
+                           </div>
+
+         </form>
 
                    </div>
                </div>
-           </form>
-
 
 
      <script>
@@ -99,9 +120,6 @@
           });
       }
 
-
-
      </script>
 
        @endsection
-

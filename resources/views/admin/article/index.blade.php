@@ -5,22 +5,15 @@
             <!--面包屑导航 开始-->
             <div class="crumb_warp">
                 <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-                <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; <a href="#">文章管理</a> &raquo; 添加商品
+                <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 文章管理
             </div>
             <!--面包屑导航 结束-->
 
-            <!--结果页快捷搜索框 开始-->
-            <div class="search_wrap">
-
-            </div>
-            <!--结果页快捷搜索框 结束-->
 
             <!--搜索结果页面 列表 开始-->
             <form action="#" method="post">
 
-
                 <div class="result_wrap">
-
 
                     <div class="result_title">
                         <h3>文章列表</h3>
@@ -29,9 +22,8 @@
                     <!--快捷导航 开始-->
                     <div class="result_content">
                         <div class="short_wrap">
-                            <a href="#"><i class="fa fa-plus"></i>新增文章</a>
-                            <a href="#"><i class="fa fa-recycle"></i>批量删除</a>
-                            <a href="#"><i class="fa fa-refresh"></i>更新排序</a>
+                            <a href="{{url('admin/article/create')}}"><i class="fa fa-plus"></i>添加文章</a>
+                            <a href="{{url('admin/article')}}"><i class="fa fa-recycle"></i>全部文章</a>
                         </div>
                     </div>
                     <!--快捷导航 结束-->

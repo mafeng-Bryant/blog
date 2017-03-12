@@ -4,14 +4,14 @@
 
            <div class="crumb_warp">
                <!--<i class="fa fa-bell"></i> 欢迎使用登陆网站后台，建站的首选工具。-->
-               <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 友情链接管理
+               <i class="fa fa-home"></i> <a href="{{url('admin/info')}}">首页</a> &raquo; 分类管理
            </div>
            <!--面包屑导航 结束-->
 
            <!--结果集标题与导航组件 开始-->
            <div class="result_wrap">
                <div class="result_title">
-                   <h3>编辑友情链接</h3>
+                   <h3>编辑分类</h3>
                    @if(count($errors)>0)
                        <div class="mark">
                            @if(is_object($errors))
@@ -27,8 +27,8 @@
                </div>
                <div class="result_content">
                    <div class="short_wrap">
-                       <a href="{{url('admin/links/create')}}"><i class="fa fa-plus"></i>添加链接</a>
-                       <a href="{{url('admin/links')}}"><i class="fa fa-recycle"></i>全部链接</a>
+                       <a href="{{url('admin/category/create')}}"><i class="fa fa-plus"></i>添加分类</a>
+                       <a href="{{url('admin/category')}}"><i class="fa fa-recycle"></i>全部分类</a>
                    </div>
                </div>
            </div>

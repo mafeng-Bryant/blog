@@ -28,7 +28,7 @@
 
         @foreach($new as $n)
 
-            <li><a href="{{url('a/'.$d->article_id)}}" title="{{$n->article_title}}" target="_blank">{{$n->article_title}}</a></li>
+            <li><a href="{{url('a/'.$n->article_id)}}" title="{{$n->article_title}}" target="_blank">{{$n->article_title}}</a></li>
 
         @endforeach
 
@@ -40,7 +40,7 @@
 
         @foreach($hot as $h)
 
-            <li><a href="{{url('a/'.$d->article_id)}}" title="{{$h->article_title}}" target="_blank">{{$h->article_title}}</a></li>
+            <li><a href="{{url('a/'.$h->article_id)}}" title="{{$h->article_title}}" target="_blank">{{$h->article_title}}</a></li>
 
         @endforeach
     </ul>

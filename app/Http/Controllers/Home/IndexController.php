@@ -39,9 +39,16 @@ class IndexController extends CommonController
 
     }
 
-    public function article()
+    public function article($article_id)
     {
-        return view('home.new');
+        $field = Article::join('blog_category','blog_article.category_id','=','blog_category.category_id')->where('blog_article.article_id',$article_id)->first();
+
+        $article['pre'] = Article::where('article_id','<',$article_id)->orderBy('article_id','desc')->first();
+
+        $article['next'] = Article::where('article_id','>',$article_id)->orderBy('article_id','asc')->first();
+
+
+        return view('home.new',compact('field','article'));
     }
 
 

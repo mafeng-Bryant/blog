@@ -71,31 +71,7 @@
 
 
             <div class="news" style="float: left">
-                <h3>
-                    <p>最新<span>文章</span></p>
-                </h3>
-                <ul class="rank">
-
-                    @foreach($new as $n)
-
-                        <li><a href="{{url('a/'.$d->article_id)}}" title="{{$n->article_title}}" target="_blank">{{$n->article_title}}</a></li>
-
-                     @endforeach
-
-                </ul>
-                <h3 class="ph">
-                    <p>点击<span>排行</span></p>
-                </h3>
-                <ul class="paih">
-
-                    @foreach($hot as $h)
-
-                        <li><a href="{{url('a/'.$d->article_id)}}" title="{{$h->article_title}}" target="_blank">{{$h->article_title}}</a></li>
-
-                    @endforeach
-
-
-                </ul>
+               @parent
                 <h3 class="links">
                     <p>友情<span>链接</span></p>
                 </h3>

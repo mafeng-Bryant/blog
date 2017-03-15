@@ -20,7 +20,32 @@
     </nav>
 </header>
 
-@yield('content')
+@section('content')
+    <h3>
+        <p>最新<span>文章</span></p>
+    </h3>
+    <ul class="rank">
+
+        @foreach($new as $n)
+
+            <li><a href="{{url('a/'.$d->article_id)}}" title="{{$n->article_title}}" target="_blank">{{$n->article_title}}</a></li>
+
+        @endforeach
+
+    </ul>
+    <h3 class="ph">
+        <p>点击<span>排行</span></p>
+    </h3>
+    <ul class="paih">
+
+        @foreach($hot as $h)
+
+            <li><a href="{{url('a/'.$d->article_id)}}" title="{{$h->article_title}}" target="_blank">{{$h->article_title}}</a></li>
+
+        @endforeach
+    </ul>
+@show
+
 
 <footer>
     <p>Design by 后盾网 <a href="http://www.miitbeian.gov.cn/" target="_blank">http://www.houdunwang.com</a> <a href="/">网站统计</a></p>

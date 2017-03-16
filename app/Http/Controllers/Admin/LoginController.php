@@ -27,7 +27,7 @@ class LoginController extends CommonController
             //login success
             session(['user' => $user]);
             //后台欢迎页面
-           return redirect('admin/index');
+           return redirect('admin');
 
         }else {
 

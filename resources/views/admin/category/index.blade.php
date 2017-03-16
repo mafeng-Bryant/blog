@@ -80,7 +80,6 @@
                                <td>
                                    <a href="{{url('admin/category/'.$v->category_id.'/edit')}}">修改</a>
                                    <a href="javascript:;" onclick="deleteCategory({{$v->category_id}})">删除</a>
-
                                </td>
                            </tr>
                 @endforeach

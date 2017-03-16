@@ -16,7 +16,7 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
     Route::get('info','IndexController@info');
 
-    Route::get('index','IndexController@index');
+    Route::get('/','IndexController@index');
 
     Route::get('quit','LoginController@quit');
 

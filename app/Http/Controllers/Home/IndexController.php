@@ -32,6 +32,8 @@ class IndexController extends CommonController
 
         $field =  Category::find($category_id);
 
+        Category::where('category_id','=',$category_id)->increment('category_view');
+
         //当前分类的子分类
         $subCategory = Category::where('category_pid',$category_id)->get();
 
@@ -43,12 +45,15 @@ class IndexController extends CommonController
     {
         $field = Article::join('blog_category','blog_article.category_id','=','blog_category.category_id')->where('blog_article.article_id',$article_id)->first();
 
+        Article::where('article_id','=',$article_id)->increment('article_view');
+
         $article['pre'] = Article::where('article_id','<',$article_id)->orderBy('article_id','desc')->first();
 
         $article['next'] = Article::where('article_id','>',$article_id)->orderBy('article_id','asc')->first();
 
+        $data = Article::where('category_id',$field->category_id)->orderBy('article_id','desc')->take(6)->get();
 
-        return view('home.new',compact('field','article'));
+        return view('home.new',compact('field','article','data'));
     }
 
 

@@ -10,19 +10,27 @@ use App\Http\Model\Links;
 class IndexController extends CommonController
 {
 
+    public  function  info(){
+
+       dd(11111);
+
+    }
+
     public function index()
     {
-        //点击量最高的六篇文章(站长推荐)
-        $pics = Article::orderBy('article_view','desc')->take(6)->get();
 
-
-        //图文列表，带分页
-        $data = Article::orderBy('article_time','desc')->paginate(5);
-
-        //友情链接
-        $links = Links::orderBy('link_order','asc')->get();
-
-        return view('home.index',compact('pics','hot','new','data','links'));
+        dd(111);
+//        //点击量最高的六篇文章(站长推荐)
+//        $pics = Article::orderBy('article_view','desc')->take(6)->get();
+//
+//
+//        //图文列表，带分页
+//        $data = Article::orderBy('article_time','desc')->paginate(5);
+//
+//        //友情链接
+//        $links = Links::orderBy('link_order','asc')->get();
+//
+//        return view('home.index',compact('pics','hot','new','data','links'));
     }
 
     public function cate($category_id)

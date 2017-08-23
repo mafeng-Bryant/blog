@@ -53,9 +53,10 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
 Route::group(['middleware' => ['web']],function (){
 
-//    Route::get('/', function () {
-//        return view('welcome');
-//    });
+    Route::get('/', function () {
+        return view('welcome');
+    });
+
 
     Route::get('/','Home\IndexController@index');
 

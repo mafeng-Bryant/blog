@@ -12,6 +12,12 @@
 */
 
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
+
+/*
 Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
 
     Route::get('info','IndexController@info');
@@ -70,6 +76,7 @@ Route::group(['middleware' => ['web']],function (){
 
 });
 
+*/
 
 
 

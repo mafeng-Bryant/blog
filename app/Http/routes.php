@@ -12,10 +12,24 @@
 */
 
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
+
+Route::get('info/{id}','MemberController@info');
+
+Route::get('info','StudentController@info');
+
+Route::get('index','IndexController@index');
+
+Route::get('query3','StudentController@query3');
+
+Route::get('query2','StudentController@query2');
+
+Route::get('query','StudentController@query');
+
+Route::get('orm1','StudentController@orm1');
 
 /*
 Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
@@ -52,8 +66,6 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
     Route::get('putfile','ConfigController@writeConfigFile');
 
-
-
 });
 
 
@@ -62,7 +74,6 @@ Route::group(['middleware' => ['web']],function (){
     Route::get('/', function () {
         return view('welcome');
     });
-
 
     Route::get('/','Home\IndexController@index');
 

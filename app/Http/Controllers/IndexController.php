@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Home;
+namespace App\Http\Controllers;
 
 
+use App\Http\Controllers\Admin\CommonController;
 use App\Http\Model\Article;
 use App\Http\Model\Category;
 use App\Http\Model\Links;
@@ -10,19 +11,12 @@ use App\Http\Model\Links;
 class IndexController extends CommonController
 {
 
-    public  function  info(){
-
-       dd(11111);
-
-    }
 
     public function index()
     {
 
-        dd(111);
-//        //点击量最高的六篇文章(站长推荐)
-//        $pics = Article::orderBy('article_view','desc')->take(6)->get();
-//
+////        //点击量最高的六篇文章(站长推荐)
+        $pics = Article::orderBy('article_view','desc')->take(6)->get();
 //
 //        //图文列表，带分页
 //        $data = Article::orderBy('article_time','desc')->paginate(5);

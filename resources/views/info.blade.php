@@ -1,0 +1,3 @@
+info blade
+
+{{$name}}  {{$age}}

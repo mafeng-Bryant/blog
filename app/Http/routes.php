@@ -12,10 +12,9 @@
 */
 
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-
+Route::get('/', function () {
+    return view('welcome');
+});
 
 Route::get('info/{id}','MemberController@info');
 
@@ -30,6 +29,26 @@ Route::get('query2','StudentController@query2');
 Route::get('query','StudentController@query');
 
 Route::get('orm1','StudentController@orm1');
+
+Route::get('orm2','StudentController@orm2');
+
+Route::get('orm3','StudentController@orm3');
+
+Route::get('url',['as'=>'url','uses'=>'StudentController@urlTest']);
+
+Route::get('request1',['uses'=>'StudentController@request1']);
+
+Route::get('cache1',['uses'=>'StudentController@cache1']);
+
+Route::get('cache2',['uses'=>'StudentController@cache2']);
+
+Route::get('error',['uses'=>'StudentController@error']);
+
+Route::get('queue',['uses'=>'StudentController@queue']);
+
+Route::get('queue',['uses'=>'StudentController@queue']);
+
+Route::get('mail',['uses'=>'StudentController@mail']);
 
 /*
 Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
@@ -50,7 +69,7 @@ Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace
 
     Route::any('upload','CommonController@upload');
 
-    Route::resource('links','LinksController');
+    Route::resoupwdrce('links','LinksController');
 
     Route::post('links/changeorder','LinksController@changerOrder');
 
@@ -90,8 +109,6 @@ Route::group(['middleware' => ['web']],function (){
 */
 
 
+Route::auth();
 
-
-
-
-
+Route::get('home', 'HomeController@index');

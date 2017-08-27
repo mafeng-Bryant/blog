@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class StudentController extends Controller {
 
@@ -186,17 +187,51 @@ class StudentController extends Controller {
      public function mail(){
 
 
-//       Mail::raw('邮件内容',function ($message){
-//          $message->from('1499603656@qq.com','小猪');
-//          $message->subject('猪猪');
-//          $message->to('673103316@qq.com');
-//       });
+       Mail::raw('邮件内容',function ($message){
+          $message->from('1499603656@qq.com','小猪');
+          $message->subject('猪猪');
+          $message->to('673103316@qq.com');
+       });
 
        Mail::send('mail.mail',['name'=>'小猪'],function ($message){
            $message->to('631383987@qq.com');
        });
 
      }
+
+     public function upload(Request $request)
+     {
+         if ($request->isMethod('Post')){
+
+            $file =  $request->file('source');
+            if ($file->isValid()){
+
+                $originalName = $file->getClientOriginalName();//原文件名
+                $ext = $file->getClientOriginalExtension();//拓展名
+                $type = $file->getClientMimeType();//type
+                $realPath = $file->getRealPath();//临时绝对路劲
+
+             $fileName = date('Y-m-d-H-i:s').'-'.uniqid().'.'.$ext;
+
+            $bool = Storage::disk('uploads')->put($fileName,file_get_contents($realPath));
+            var_dump($bool);
+//                $bool = Storage::disk('uploads')->put($fileName,file_get_contents($realPath));
+//                var_dump($bool);
+
+            }
+
+             exit;
+         }
+
+        return view('student.upload');
+     }
+
+     public function helloName($name){
+
+       var_dump('hello'.' '.$name);
+
+     }
+
 
 
 }

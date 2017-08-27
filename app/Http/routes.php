@@ -50,6 +50,86 @@ Route::get('queue',['uses'=>'StudentController@queue']);
 
 Route::get('mail',['uses'=>'StudentController@mail']);
 
+Route::any('upload',['uses'=>'StudentController@upload']);
+
+Route::get('hello/{name}',['uses'=>'StudentController@helloName']);
+//->where('name','[A-Za-z]+');
+
+
+Route::get('pp',['as'=>'mafengma',function (){
+   return 'hello laravel';
+}]);
+
+Route::get('testNameRoute',function (){
+    return redirect()->route('mafengma');
+//  return route('mafengma');
+});
+
+//路由组
+Route::group(['middleware' => 'test'],function (){
+
+ Route::get('write/laravel',function (){
+     //使用test中间件
+     dd('write/laravel');
+ });
+
+  Route::get('update/laravel',function (){
+      //使用test中间件
+      dd('update/laravel');
+  });
+
+});
+
+Route::get('age/refuse',['as' => 'refuse',function (){
+
+    return '未成年人禁止入内';
+
+}]);
+
+
+Route::group(['namespace' => 'API','prefix' => 'V1.3'], function(){
+    // 控制器在 "App\Http\Controllers\API" 命名空间下
+
+    Route::get('testma',['uses' => 'TestController@test']);
+
+});
+
+
+Route::get('testCsrf',function (){
+//    $csfr_field = csrf_field();
+//    {$csfr_field}
+    $html = <<<GET
+   <form method="POST" action="/testCsrf">
+    <input type="submit" value="Test"/>
+</form>
+GET;
+  return $html;
+});
+
+
+Route::post('testCsrf',function (){
+
+    return 'Success!';
+});
+
+
+Route::resource('post','PostController');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
 Route::group(['middleware' => ['web','admin.login'],'prefix'=>'admin','namespace'=>'Admin'],function (){
 

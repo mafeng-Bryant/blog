@@ -112,8 +112,51 @@ Route::post('testCsrf',function (){
     return 'Success!';
 });
 
-
 Route::resource('post','PostController');
+
+Route::controller('request','RequestController');
+
+Route::get('testResponse',function (){
+
+    $content = 'Hello laravel';
+    $status = 500;
+    $value = 'text/html;charset=utf-8';
+    return response($content,$status)->headers('Content-Type',$value);
+   // return (new \Illuminate\Http\Response($content,$status))->header('Content-Type',$value);
+
+});
+
+
+Route::get('testResponseView',function (){
+
+   $value = 'text/html; charset=utf-8';
+    $data = ['message'=> 'hello response view','title'=>'test'];
+   return response()->view('hello',$data)
+        ->header('Content-Type',$value);
+
+});
+
+Route::get('testResponseJson',function(){
+    $data = ['message'=> 'hello response view','title'=>'test'];
+    return response()->json($data)->setCallback(request()->input('callback'));
+});
+
+//文件下载
+
+Route::get('testDownLoad',function (){
+
+    $path = realpath(base_path('public/uploads')).'/20170304194325541.jpeg';
+   return response()->download($path,'ma.jpg');
+
+});
+
+Route::get('testViewHello',function(){
+    return view('hello');
+});
+
+Route::get('testViewHome',function(){
+    return view('One');
+});
 
 
 

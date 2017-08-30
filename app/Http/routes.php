@@ -159,6 +159,9 @@ Route::get('testViewHome',function(){
 });
 
 
+Route::get('qa',['uses'=>'TestController@index']);
+
+
 
 
 

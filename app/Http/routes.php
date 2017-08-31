@@ -159,7 +159,7 @@ Route::get('testViewHome',function(){
 });
 
 
-Route::get('qa',['uses'=>'TestController@index']);
+Route::get('testProvider',['uses'=>'TestController@index']);
 
 
 

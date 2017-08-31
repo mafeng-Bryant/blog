@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Test;
 use App\Http\Controllers\TestService;
 use Illuminate\Support\ServiceProvider;
 
-class TestPPServiceProvider extends ServiceProvider
+class ProductServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
@@ -24,16 +25,15 @@ class TestPPServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        dd(333);
         //
-         $this->app->singleton('test',function (){
-             return new TestService();
-         });
-
-        $this->app->bind('App\Http\Controllers\TestContract',function (){
-           return new TestService();
+        $this->app->singleton('test',function(){
+//            return new TestService();
+            return new Test();
         });
 
-
+        //使用bind绑定实例到接口以便依赖注入
+        $this->app->bind('App\Http\Controllers\TestService',function(){
+            return new TestService();
+        });
     }
 }

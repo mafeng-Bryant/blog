@@ -1,3 +1,0 @@
-info blade
-
-{{$name}}  {{$age}}

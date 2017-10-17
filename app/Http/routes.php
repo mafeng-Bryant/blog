@@ -12,8 +12,15 @@
 */
 
 Route::get('/', function () {
-
-//    return \App\Member::all();
-    return view('login');
+    return view('Welcome');
 });
+
+
+Route::any('login','View\MemberController@toLogin');
+
+Route::any('register','View\MemberController@toRegister');
+
+Route::any('createCode','Service\ValidateController@create');
+
+Route::any('sendSMS','Service\ValidateController@sendSMS');
 

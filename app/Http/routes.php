@@ -16,11 +16,13 @@ Route::get('/', function () {
 });
 
 
-Route::any('login','View\MemberController@toLogin');
+Route::get('login','View\MemberController@toLogin');
 
 Route::any('register','View\MemberController@toRegister');
 
 Route::any('createCode','Service\ValidateController@create');
 
 Route::any('sendSMS','Service\ValidateController@sendSMS');
+
+Route::post('call_register','View\MemberController@registerAction');
 

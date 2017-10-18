@@ -38,6 +38,7 @@
 
 @section('my-js')
   <script type="text/javascript">
+      {{3333}}
       $('.bk_validate_code').click(function(){
           $(this).attr('src','createCode?random='+Math.random());
       });

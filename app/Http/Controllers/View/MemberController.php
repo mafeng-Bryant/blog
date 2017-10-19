@@ -115,7 +115,7 @@ class MemberController extends ApiController
             $m3_email->to = $email;
             $m3_email->cc = 'magina@speakez.cn';
             $m3_email->subject = '凯恩书店验证';
-            $m3_email->content = '请于24小时点击该链接完成验证. http://book.magina.com/service/validate_email'
+            $m3_email->content = '请于24小时点击该链接完成验证. http://blog.patpat.dev/validate_email'
                 . '?member_id=' . $member->id
                 . '&code=' . $uuid;
 
@@ -134,9 +134,70 @@ class MemberController extends ApiController
             $m3_result->status = 0;
             $m3_result->message = '注册成功';
             return $m3_result->toJson();
-
-
         }
+
+    }
+
+    public function validateEmail(Request $request)
+    {
+       $member_id = $request->input('member_id');
+       $code = $request->input('code');
+       if ($member_id=='' || $code ==''){
+          return '验证异常';
+       }
+       $tempEmail = TempEmail::where('member_id',$member_id)->first();
+       if ($tempEmail ==null){
+           return '验证异常';
+       }
+
+       if ($tempEmail->code == $code){
+         if (time() > strtotime($tempEmail->deadline)){
+           return '该链接已经失效';
+         }
+
+        $member = Member::find($member_id);
+        $member->active = 1;
+        $member->save();
+
+        return redirect('/login');
+
+       }else {
+           return '该链接已经失效';
+       }
+    }
+
+    public function loginAction(Request $request)
+    {
+        $m3_result = new M3Result();
+
+        $username = $request->get('username','');
+        $password = $request->get('password','');
+        $validate_code = $request->get('validate_code', '');
+
+        $member = null;
+        if (strpos($username,'@') == true){
+         $member = Member::where('email',$username)->first();
+        }else {
+         $member = Member::where('phone',$username)->first();
+        }
+        if ($member ==null){
+
+          $m3_result->status = 2;
+          $m3_result->message = '该用户不存在';
+          return $m3_result->toJson();
+
+        }else {
+           if (md5('bk'+$password) != $member->password){
+               $m3_result->status = 3;
+               $m3_result->message = '密码不正确';
+               return $m3_result->toJson();
+           }
+        }
+
+//       $request->session()->put('member',$member);
+       $m3_result->status = 0;
+       $m3_result->message = '登录成功';
+       return $m3_result->toJson();
 
     }
 

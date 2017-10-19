@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('Welcome');
+    return 'Welcome';
 });
 
 
@@ -25,4 +25,16 @@ Route::any('createCode','Service\ValidateController@create');
 Route::any('sendSMS','Service\ValidateController@sendSMS');
 
 Route::post('call_register','View\MemberController@registerAction');
+
+Route::get('validate_email','View\MemberController@validateEmail');
+
+Route::post('loginAction','View\MemberController@loginAction');
+
+Route::get('category','View\BookController@toCategory');//分类页面
+
+Route::get('category/parent_id/{parent_id}','Service\BookController@getCategoryByParentId');//分类数据
+
+Route::get('product/category_id/{category_id}','View\BookController@toProduct');
+
+Route::get('product/{product_id}','View\BookController@toProductContent');
 

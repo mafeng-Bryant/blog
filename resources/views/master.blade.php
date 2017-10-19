@@ -5,10 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="/css/weui.css">
-    <link rel="stylesheet" href="/css/book.css">
+    <link rel="stylesheet" href="http://blog.patpat.dev/css/weui.css">
+    <link rel="stylesheet" href="http://blog.patpat.dev/css/book.css">
 </head>
 <body>
+
+<div class="bk_title_bar">
+   <img class="bk_back" src="/images/back.png" alt="" onclick="history.go(-1);">
+   <p class="bk_title_content"></p>
+    <img class="bk_menu" src="/images/menu.png" alt="" onclick="onMenuClick();">
+</div>
 
 <div class="page">
     @yield('content')
@@ -80,6 +86,9 @@
             setTimeout(function() {$('.bk_toptips').hide();}, 2000);
         }
     }
+
+    $('.bk_title_content').html(document.title);
+
 </script>
 
 @yield('my-js')
